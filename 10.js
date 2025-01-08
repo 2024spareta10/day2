@@ -30,8 +30,45 @@
 // TODO: groupBy 함수를 작성하세요.
 
 function groupBy(arr, key) {
-  // 여기에 코드를 작성하세요.
+  let check = false;
+  var temp = arr.map(obj => {
+    if (Object.keys(obj).includes(key)) {
+      return obj[key];
+    }
+    else{
+      check = true;
+    }
+  });
+  let list = [...new Set(temp)];
+  console.log(list);
+  let ans = {};
+
+  list.forEach((e, idx) => {
+    ans[e] = arr.filter(obj => {
+      for (const k in obj) {
+        if (k === key && e === obj[k]) {
+          return obj;
+        }
+      }
+    })
+  })
+  if(check){
+    ans['undefined'] = arr.filter(obj => {
+      if (!Object.keys(obj).includes(key)) {
+        return obj;
+      }
+    })
+  }
+  
+  return ans;
 }
+
+groupBy([
+  { name: "Alice", group: "A" },
+  { name: "Bob" },
+  { name: "Charlie", group: "A" },
+  { name: "David" },
+], "group")
 
 // export를 수정하지 마세요.
 export { groupBy };
