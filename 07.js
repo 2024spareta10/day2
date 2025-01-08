@@ -1,4 +1,6 @@
 /**
+import { name } from './node_modules/ci-info/index.d';
+import { typeOf } from './node_modules/@sinonjs/commons/types/index.d';
  * Q: array method 응용 (method 체이닝)
  *
  * - get20sEmail 함수의 파라미터로 person object 배열이 주어집니다.
@@ -24,7 +26,15 @@
  */
 
 // TODO: get20sEmail 함수를 작성하세요.
-function get20sEmail() {}
+function get20sEmail(arr) {
+    return arr.filter(obj => {
+        if(Math.floor(obj.age / 10) === 2){
+            return obj;
+        }
+    }).sort((a, b) => a.age - b.age).map(e => {
+        return e.email;
+    });
+}
 
 // export를 수정하지 마세요.
 export { get20sEmail };

@@ -15,7 +15,20 @@
 
 // TODO: chunkArray 함수를 작성하세요.
 function chunkArray(arr, size) {
-  // TODO
+  var ans = [];
+  arr = arr.reverse();
+  var count = 0;
+  let temp = [];
+  while(arr.length > 0){
+    temp.push(arr.pop());
+    if(++count === size){
+      ans.push(temp);
+      count = 0;
+      temp = [];
+    }
+  }
+  temp.length !== 0 ? ans.push(temp) : null;
+  return ans;
 }
 
 // export를 수정하지 마세요.

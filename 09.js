@@ -12,8 +12,13 @@
 
 // TODO: calculateStatistics 함수를 작성하세요.
 function calculateStatistics(users) {
-  // TODO
+  var age = users.map(e => e.age);
+  var aver = age.reduce((acc, cur) => acc + cur, 0) / users.length;
+  var max = age.sort((a, b) => b - a)[0];
+
+  return {averageAge:aver, maxAge:max};
 }
+
 
 // export를 수정하지 마세요.
 export { calculateStatistics };
